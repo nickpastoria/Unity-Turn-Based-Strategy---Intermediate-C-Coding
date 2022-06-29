@@ -11,6 +11,7 @@ public class MouseWorld : MonoBehaviour
 
         CreateRay(out Ray ray, out RaycastHit hit);
         DrawRay(ray, hit);
+        transform.position = hit.point;
     }
 
     private void CreateRay(out Ray ray, out RaycastHit hit)
