@@ -9,9 +9,14 @@ public class MouseWorld : MonoBehaviour
     {
         Debug.Log(Input.mousePosition);
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out RaycastHit hit);
+        CreateRay(out Ray ray, out RaycastHit hit);
         DrawRay(ray, hit);
+    }
+
+    private void CreateRay(out Ray ray, out RaycastHit hit)
+    {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hit);
     }
 
     private void DrawRay(Ray ray, RaycastHit hit)
