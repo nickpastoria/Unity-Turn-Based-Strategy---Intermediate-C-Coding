@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDebug: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &171164790
 Transform:
   m_ObjectHideFlags: 0
@@ -700,7 +703,7 @@ GameObject:
   - component: {fileID: 1916751365}
   - component: {fileID: 1916751364}
   - component: {fileID: 1916751363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

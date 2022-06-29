@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseWorld : MonoBehaviour
 {
     public bool drawDebug = false;
+    public LayerMask layerMask;
     private void Update()
     {
         Debug.Log(Input.mousePosition);
@@ -17,7 +18,7 @@ public class MouseWorld : MonoBehaviour
     private void CreateRay(out Ray ray, out RaycastHit hit)
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
     }
 
     private void DrawRay(Ray ray, RaycastHit hit)
