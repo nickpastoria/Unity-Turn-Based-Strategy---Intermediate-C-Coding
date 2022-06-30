@@ -11,23 +11,25 @@ public class Unit : MonoBehaviour
     private void Update()
     {
         bool leftMouseDown = Input.GetMouseButtonDown(0);
-        Move();
+        
         if(leftMouseDown)
         {
-            targetPosition = MouseWorld.GetPosition();
-            isMoving = true;
+            this.targetPosition = MouseWorld.GetPosition();
+            this.isMoving = true;
         }
+
+        if(this.isMoving) MoveToTarget();
     }
 
-    private void Move()
+    private void MoveToTarget()
     {
-        if (IsAtTargetPosition() && isMoving) 
+        if (IsAtTargetPosition()) 
         {
-            transform.position = targetPosition;
-            isMoving = false;
+            transform.position = this.targetPosition;
+            this.isMoving = false;
             return;
         }
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        Vector3 moveDirection = (this.targetPosition - transform.position).normalized;
         transform.position += moveDirection * this.moveSpeed * Time.deltaTime;
     }
 
