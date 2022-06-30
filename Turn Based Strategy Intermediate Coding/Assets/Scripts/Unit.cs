@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour
 
         if (IsAtTargetPosition()) 
         {
+            // Close any small gap that may exist between the unit and the target position.
             transform.position = this.targetPosition;
             this.isMoving = false;
         }
