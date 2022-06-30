@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    private Vector3 targetPosition;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private Vector3 targetPosition;
     private bool isMoving = false;
 
     private void Update()
