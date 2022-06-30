@@ -919,3 +919,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  unitAnimator: {fileID: 1998974467}
+--- !u!95 &1998974467 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95485627480488536, guid: 8dbb22b9d53a7664b8619d4c6888d92f,
+    type: 3}
+  m_PrefabInstance: {fileID: 470603059}
+  m_PrefabAsset: {fileID: 0}
