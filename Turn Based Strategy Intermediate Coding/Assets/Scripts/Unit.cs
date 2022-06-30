@@ -5,16 +5,17 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f;
-    [SerializeField] private Vector3 targetPosition;
     private bool isMoving = false;
+    private Vector3 targetPosition;
 
     private void Update()
     {
+        bool leftMouseDown = Input.GetMouseButtonDown(0);
         Move();
-
-        if(Input.GetKeyDown(KeyCode.T)) 
+        if(leftMouseDown)
         {
-            SetMoveTarget(new Vector3(4, 0, 4));
+            targetPosition = MouseWorld.GetPosition();
+            isMoving = true;
         }
     }
 
@@ -28,12 +29,6 @@ public class Unit : MonoBehaviour
         }
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
         transform.position += moveDirection * this.moveSpeed * Time.deltaTime;
-    }
-
-    private void SetMoveTarget(Vector3 targetPosition) 
-    {
-        this.targetPosition = targetPosition;
-        isMoving = true;
     }
 
     private bool IsAtTargetPosition()
