@@ -10,7 +10,9 @@ public class Unit : MonoBehaviour
 
     private void Update()
     {
-        bool leftMouseDown = Input.GetMouseButtonDown(0);
+        // 0 is left 1 is right
+        int mouseButton = 0;
+        bool leftMouseDown = Input.GetMouseButtonDown(mouseButton);
         
         if(leftMouseDown)
         {
@@ -18,17 +20,17 @@ public class Unit : MonoBehaviour
             this.isMoving = true;
         }
 
+        if (IsAtTargetPosition()) 
+        {
+            transform.position = this.targetPosition;
+            this.isMoving = false;
+        }
+
         if(this.isMoving) MoveToTarget();
     }
 
     private void MoveToTarget()
     {
-        if (IsAtTargetPosition()) 
-        {
-            transform.position = this.targetPosition;
-            this.isMoving = false;
-            return;
-        }
         Vector3 moveDirection = (this.targetPosition - transform.position).normalized;
         transform.position += moveDirection * this.moveSpeed * Time.deltaTime;
     }
