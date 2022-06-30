@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class MouseWorld : MonoBehaviour
 {
-    public bool drawDebug = false;
-    public LayerMask layerMask;
-    private void Update()
+    private static MouseWorld instance;
+    [SerializeField] private LayerMask mouseLayerMask;
+    
+    private void Awake() 
     {
-        Debug.Log(Input.mousePosition);
-
-        CreateRay(out Ray ray, out RaycastHit hit);
-        DrawRay(ray, hit);
-        transform.position = hit.point;
+        instance = this;
     }
 
-    private void CreateRay(out Ray ray, out RaycastHit hit)
+    public static Vector3 GetPosition()
     {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, instance.mouseLayerMask);
+        return hit.point;
     }
-
-    private void DrawRay(Ray ray, RaycastHit hit)
-    {
-        if (drawDebug)
-        {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
-        }
-    }
-
 }
