@@ -5,10 +5,16 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private Animator unitAnimator;
     private bool isMoving = false;
     private Vector3 targetPosition;
 
     private void Update()
+    {
+        mouseWalking();
+    }
+
+    private void mouseWalking()
     {
         // 0 is left 1 is right
         int mouseButton = 0;
@@ -17,6 +23,7 @@ public class Unit : MonoBehaviour
         if(leftMouseDown)
         {
             this.targetPosition = MouseWorld.GetPosition();
+            unitAnimator.SetBool("isWalking", true);
             this.isMoving = true;
         }
 
@@ -24,12 +31,12 @@ public class Unit : MonoBehaviour
         {
             // Close any small gap that may exist between the unit and the target position.
             transform.position = this.targetPosition;
+            unitAnimator.SetBool("isWalking", false);
             this.isMoving = false;
         }
 
         if(this.isMoving) MoveToTarget();
     }
-
     private void MoveToTarget()
     {
         Vector3 moveDirection = (this.targetPosition - transform.position).normalized;
