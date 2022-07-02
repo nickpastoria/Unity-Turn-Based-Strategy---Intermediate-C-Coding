@@ -10,6 +10,10 @@ public class Unit : MonoBehaviour
     private bool isMoving = false;
     private Vector3 targetPosition;
 
+    private void Awake() {
+        this.targetPosition = transform.position;
+    }
+
     private void Update()
     {
         mouseWalking();
