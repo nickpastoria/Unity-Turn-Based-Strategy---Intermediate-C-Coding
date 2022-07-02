@@ -919,6 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  turnSpeed: 10
   unitAnimator: {fileID: 1998974467}
 --- !u!95 &1998974467 stripped
 Animator:

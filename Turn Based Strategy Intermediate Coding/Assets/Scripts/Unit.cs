@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float turnSpeed = 180f;
     [SerializeField] private Animator unitAnimator;
     private bool isMoving = false;
     private Vector3 targetPosition;
@@ -40,6 +41,7 @@ public class Unit : MonoBehaviour
     private void MoveToTarget()
     {
         Vector3 moveDirection = (this.targetPosition - transform.position).normalized;
+        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * turnSpeed);
         transform.position += moveDirection * this.moveSpeed * Time.deltaTime;
     }
 
