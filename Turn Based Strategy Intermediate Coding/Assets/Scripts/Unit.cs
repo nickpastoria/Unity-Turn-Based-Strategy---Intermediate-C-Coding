@@ -15,19 +15,15 @@ public class Unit : MonoBehaviour
         mouseWalking();
     }
 
+    public void setWalkTarget(Vector3 targetPosition)
+    {
+        this.targetPosition = targetPosition;
+        unitAnimator.SetBool("isWalking", true);
+        this.isMoving = true;
+    }
+
     private void mouseWalking()
     {
-        // 0 is left 1 is right
-        int mouseButton = 0;
-        bool leftMouseDown = Input.GetMouseButtonDown(mouseButton);
-        
-        if(leftMouseDown)
-        {
-            this.targetPosition = MouseWorld.GetPosition();
-            unitAnimator.SetBool("isWalking", true);
-            this.isMoving = true;
-        }
-
         if (IsAtTargetPosition()) 
         {
             // Close any small gap that may exist between the unit and the target position.
